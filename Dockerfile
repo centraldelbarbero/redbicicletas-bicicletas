@@ -1,6 +1,6 @@
 FROM node:14-stretch-slim
 
-RUN go get https://github.com/cfranco92/redbicicletas-bicicletas
+RUN go get github.com/centraldelbarbero/redbicicletas-bicicletas
 
 # Create app directory
 RUN mkdir /app
