@@ -1,3 +1,4 @@
+// By Cristian Franco
 const Model = require('./model');
 
 function addBicycle(bicycle) {
@@ -18,8 +19,13 @@ async function updateBicycle(id, bicycle) {
     const founBicycle = await Model.findOne({
         _id: id
     });
-    founBicycle.name = bicycle.name
-    founBicycle.user = bicycle.user
+
+    founBicycle.bicycleId = bicycle.bicycleId;
+    founBicycle.color = bicycle.color;
+    founBicycle.model = bicycle.model;
+    founBicycle.latitude = bicycle.latitude;
+    founBicycle.longitude = bicycle.longitude;
+    founBicycle.user = bicycle.user;
 
     const newStatus = await founBicycle.save();
     return newStatus;

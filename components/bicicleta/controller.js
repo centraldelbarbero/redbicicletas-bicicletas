@@ -1,12 +1,18 @@
+// By Cristian Franco
 const store = require('./store');
 
-function addBicycle(name) {
-    if (!name) {
-        return Promise.reject('Invalid name');
+function addBicycle(bicycleId, color, model, latitude, longitude,) {
+    if (!bicycleId) {
+        return Promise.reject('Invalid id');
     }
-
+    let user = ''
     const bicycle = {
-        name,
+        bicycleId,
+        color,
+        model,
+        latitude,
+        longitude,
+        user
     };
     return store.add(bicycle);
 }
@@ -21,16 +27,11 @@ function listBicycles() {
     return store.list();
 }
 
-function updateBicycleById(id, name, user) {
+function updateBicycleById(id, bicycleId, color, model, latitude, longitude, user) {
     return new Promise(async (resolve, reject) => {
-        if (!id || !name) {
-            reject('Invalid data');
-            return false;
-        }
 
         const bicycle = {
-            name,
-            user
+            bicycleId, color, model, latitude, longitude, user
         }
 
         const result = await store.updateById(id, bicycle);

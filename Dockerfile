@@ -1,6 +1,7 @@
-FROM node:14-stretch-slim
-
+FROM golang as builder
 RUN go get github.com/centraldelbarbero/redbicicletas-bicicletas
+
+FROM node:14-stretch-slim
 
 # Create app directory
 RUN mkdir /app

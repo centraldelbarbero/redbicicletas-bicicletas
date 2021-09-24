@@ -1,8 +1,10 @@
+// By Cristian Franco
 const express = require('express');
 const response = require('../../network/response');
 const controller = require('./controller');
 const router = express.Router();
 
+// END-POINTS
 router.post('/', createBicycle);
 router.get('/:id', getBicycleById)
 router.get('/', getBicycles);
@@ -10,7 +12,7 @@ router.put('/:id', updateBicycle);
 router.delete('/:id', deleteBicycle);
 
 function createBicycle(req, res) {
-    controller.addBicycle(req.body.name)
+    controller.addBicycle(req.body.bicycleId, req.body.color, req.body.model, req.body.latitude, req.body.longitude)
         .then(data => {
             response.success(req, res, data, 201);
         })
@@ -41,8 +43,7 @@ function getBicycles(req, res) {
 
 function updateBicycle(req, res) {
     controller.updateBicycleById(req.params.id,
-        req.body.name,
-        req.body.user,
+        req.body.bicycleId, req.body.color, req.body.model, req.body.latitude, req.body.longitude, req.body.user
     )
         .then((data) => {
             response.success(req, res, data, 200);
